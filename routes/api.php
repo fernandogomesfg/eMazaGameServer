@@ -20,9 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-//rota para permitir buscar disciplinas
-Route::get('/subjects', [SubjectController::class, 'getData']);
-
-//rota para permitir buscar perguntas
-Route::get('/questions', [QuestionController::class, 'getData']);
+Route::apiResources([
+    'subjects' => SubjectController::class,
+    'questions' => QuestionController::class,
+]);
