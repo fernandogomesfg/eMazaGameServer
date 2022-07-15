@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Question;
+use App\Traits\HelperTrait;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
+    use HelperTrait;
     //metodo responsavel por recupera a lista das perguntas
     public function index (Request $request){
 
-        return response()->json(['sucess' => 'Perguntas retomadas com sucesso'], status:200);
+        return $this->processQuestions($request);
+
     }
 
     //metodo responsavel por adicionar novas perguntas
